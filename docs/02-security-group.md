@@ -1,9 +1,5 @@
-
----
-
 ## **📄 docs/02-security-group.md**
 
-```markdown
 # 🛡️ Security Groups in AWS
 
 ## What is a Security Group?
@@ -37,6 +33,7 @@ aws ec2 revoke-security-group-ingress \
    --group-id sg-123 --protocol tcp \
    --port 22 \
    --cidr YOUR-IP/32
+```
 
 # Common Issues
 

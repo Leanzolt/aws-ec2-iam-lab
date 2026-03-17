@@ -1,9 +1,5 @@
-
----
-
 ## **📄 docs/04-launch-ec2.md**
 
-```markdown
 # 🚀 Launching EC2 Instances
 
 ## Required Parameters

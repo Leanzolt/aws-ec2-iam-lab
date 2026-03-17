@@ -8,7 +8,7 @@ This lab orchestrates a secure connection between identity management and comput
 3. **EC2 Provisioning:** The instance is launched with the Instance Profile attached.
 4. **User Data Execution:** On first boot, the instance uses its assigned permissions to verify S3 access without needing manual credentials (using IMDSv2).
 
-
+``` text
 ┌─────────────────┐
 │ Internet │
 └────────┬────────┘
@@ -28,7 +28,7 @@ This lab orchestrates a secure connection between identity management and comput
 │ User Data │
 │ (Bootstrap) │
 └─────────────────┘
-
+```
 
 ## Security Layers
 
@@ -77,7 +77,7 @@ This lab orchestrates a secure connection between identity management and comput
 
 
 ## Resource Dependencies
-
+```text
 Key Pair (independent)
 │
 └──► EC2 Instance
@@ -93,5 +93,5 @@ IAM Role (independent)
 └──► Instance Profile
 │
 └──► EC2 instance
-
+```
 

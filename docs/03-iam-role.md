@@ -1,9 +1,5 @@
-
----
-
 ## **📄 docs/03-iam-role.md**
 
-```markdown
 # 🔑 IAM Roles for EC2
 
 ## What is an IAM Role?
@@ -34,6 +30,7 @@ aws iam attach-role-policy \
 aws iam detach-role-policy \
    --role-name my-role \
    --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
+```
 
 # Common Issues
 

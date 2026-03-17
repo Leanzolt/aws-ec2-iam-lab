@@ -34,3 +34,5 @@ aws ec2 describe-instances \
 
 # Try connecting with -v for verbose
 ssh -v -i your-key.pem ec2-user@IP
+```
+
