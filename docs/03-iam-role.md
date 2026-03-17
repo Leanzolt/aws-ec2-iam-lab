@@ -34,8 +34,8 @@ aws iam detach-role-policy \
 
 # Common Issues
 
-* "Not authorized": Role missing permissions
+- **"Not authorized"**: Role missing permissions
 
-* "Profile not found": Forgot to create instance profile
+- **"Profile not found"**: Forgot to create instance profile
 
-* "Can't assume role": Trust policy incorrect
+- **"Can't assume role"**: Trust policy incorrect

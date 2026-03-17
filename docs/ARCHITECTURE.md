@@ -10,23 +10,23 @@ This lab orchestrates a secure connection between identity management and comput
 
 ``` text
 ┌─────────────────┐
-│ Internet │
+│    Internet     │
 └────────┬────────┘
-│
+         │
 ┌────────▼────────┐
-│ Security Group │
-│ (Port 22 only) │
+│  Security Group │
+│  (Port 22 only) │
 └────────┬────────┘
-│
+         │
+┌────────▼────────┐      ┌─────────────────┐
+│   EC2 Instance  │      │    IAM Role     │
+│     t2.micro    │◄─────┤  (S3 ReadOnly)  │
+│  Amazon Linux 3 │      │                 │
+└────────┬────────┘      └─────────────────┘
+         │
 ┌────────▼────────┐
-┌─────────────────┐ │ EC2 Instance │
-│ IAM Role │◄────────────────│ t2.micro │
-│ (S3 ReadOnly) │ │ Amazon Linux 2 │
-└─────────────────┘ └────────┬────────┘
-│
-┌────────▼────────┐
-│ User Data │
-│ (Bootstrap) │
+│    User Data    │
+│   (Bootstrap)   │
 └─────────────────┘
 ```
 
@@ -78,20 +78,10 @@ This lab orchestrates a secure connection between identity management and comput
 
 ## Resource Dependencies
 ```text
-Key Pair (independent)
-│
-└──► EC2 Instance
-▲
-│
-Security Group (independent)
-│
-└──► EC2 Instance
-▲
-│
-IAM Role (independent)
-│
-└──► Instance Profile
-│
-└──► EC2 instance
+Key Pair ──────────┐
+                   │
+Security Group ────┼──► EC2 Instance
+                   │
+IAM Role ──► Profile ──┘
 ```
 

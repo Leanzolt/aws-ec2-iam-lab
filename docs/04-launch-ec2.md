@@ -25,4 +25,4 @@
 ## Common Issues
 - **"InvalidAMIID.NotFound"**: Wrong region or AMI ID
 - **"Max spot instance count exceeded"**: Account limits
-- **"InsufficientInstanceCapacity"": AWS capacity issues (try different AZ)
+- **"InsufficientInstanceCapacity""**: AWS capacity issues (try different AZ)

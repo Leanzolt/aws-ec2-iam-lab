@@ -15,18 +15,19 @@ It's a pair of keys (public and private) that allows secure SSH access to EC2 in
 aws ec2 describe-key-pairs
 
 # Delete key pair
-aws ec2 delete-key-pair \
+aws ec2 delete-key-pair /
    --key-name my-key
 
 # Import existing key
 aws ec2 import-key-pair \
    --key-name my-key \
    --public-key-material fileb://~/.ssh/id_rsa.pub
+```
 
-# Common Issues
+## Common Issues
 
-* "Permission denied": Check file permissions (chmod 400)
+- **"Permission denied"**: Check file permissions (chmod 400)
 
-* "Unprotected private key file": Same issue, fix with chmod
+- **"Unprotected private key file"**: Same issue, fix with chmod
 
-* "Key pair not found": Wrong region or key doesn't exist
+- **"Key pair not found"**: Wrong region or key doesn't exist

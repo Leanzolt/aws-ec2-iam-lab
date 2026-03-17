@@ -25,7 +25,8 @@ aws ec2 describe-security-groups
 # Add HTTP rule
 aws ec2 authorize-security-group-ingress \
    --group-id sg-123 \
-   --protocol tcp --port 80 \
+   --protocol tcp \
+   --port 80 
    --cidr 0.0.0.0/0
 
 # Remove rule
@@ -37,8 +38,8 @@ aws ec2 revoke-security-group-ingress \
 
 # Common Issues
 
-* "Timeout": SG blocking or instance not running
+- **"Timeout"**: SG blocking or instance not running
 
-* "Connection refused": Service not running on instance
+- **"Connection refused"**: Service not running on instance
 
-* "Can't connect from work": IP changed, update SG
+- **"Can't connect from work"**: IP changed, update SG
