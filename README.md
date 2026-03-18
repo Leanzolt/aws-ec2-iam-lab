@@ -82,19 +82,41 @@ aws-ec2-iam-lab/
 
 ```bash
 # Create Key Pair
-aws ec2 create-key-pair --key-name lab-key --query 'KeyMaterial' --output text > lab-key.pem
+aws ec2 create-key-pair \
+   --key-name lab-key \
+   --query 'KeyMaterial' \
+   --output text > lab-key.pem
 
 # Create Security Group
-SG_ID=$(aws ec2 create-security-group --group-name lab-sg --description "Lab security group" --vpc-id $(aws ec2 describe-vpcs --filters Name=is-default,Values=true --query Vpcs[0].VpcId --output text) --query GroupId --output text)
+SG_ID=$(aws ec2 create-security-group \
+           --group-name lab-sg \
+           --description "Lab security group" \
+           --vpc-id $(aws ec2 describe-vpcs --filters Name=is-default,Values=true --query Vpcs[0].VpcId --output text) \
+           --query GroupId \
+           --output text)
 
 # Authorize SSH
-aws ec2 authorize-security-group-ingress --group-id $SG_ID --protocol tcp --port 22 --cidr $(curl -s ifconfig.me)/32
+aws ec2 authorize-security-group-ingress \
+   --group-id $SG_ID \
+   --protocol tcp \
+   --port 22 \
+   --cidr $(curl -s ifconfig.me)/32
 
 # Create IAM Role
-aws iam create-role --role-name lab-ec2-role --assume-role-policy-document file://trust-policy.json
+aws iam create-role \
+   --role-name lab-ec2-role \
+   --assume-role-policy-document file://trust-policy.json
 
 # Launch instance
-INSTANCE_ID=$(aws ec2 run-instances --image-id $(aws ec2 describe-images --owners amazon --filters Name=name,Values=amzn2-ami-hvm-*-x86_64-gp2 --query Images[0].ImageId --output text) --instance-type t2.micro --key-name lab-key --security-group-ids $SG_ID --iam-instance-profile Name=lab-ec2-profile --user-data file://user-data.sh --query Instances[0].InstanceId --output text)
+INSTANCE_ID=$(aws ec2 run-instances \
+                --image-id $(aws ec2 describe-images --owners amazon --filters Name=name,Values=amzn2-ami-hvm-*-x86_64-gp2 --query Images[0].ImageId --output text) \
+                --instance-type t2.micro \
+                --key-name lab-key \
+                --security-group-ids $SG_ID \
+                --iam-instance-profile Name=lab-ec2-profile \
+                --user-data file://user-data.sh \
+                --query Instances[0].InstanceId \
+                --output text)
 ```
 
 
